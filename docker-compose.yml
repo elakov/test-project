@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: test
+    volumes:
+      - ./database/table.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+  web:
+    image: node:16.8.0-alpine
+    working_dir: /app
+    command: npm run start:dev
+    volumes:
+      - ./:/app
+    ports:
+      - "4000:4000"

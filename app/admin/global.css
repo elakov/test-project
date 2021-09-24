@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-width: 870px;
+    height: 100%;
+    min-height: 500px;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    font-size: 13px;
+    color: #111;
+    background: #dcede4;
+}

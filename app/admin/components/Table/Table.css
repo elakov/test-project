@@ -1,0 +1,18 @@
+.table {
+    width: 100%;
+}
+
+.table_title-cell {
+    position: relative;
+    padding: 12px 5px;
+    font-weight: bold;
+    overflow: hidden;
+    background: #f7f7f7;
+}
+
+.table_row-cell {
+    position: relative;
+    height: 18px;
+    padding: 10px 5px;
+    border-bottom: 1px solid #ccc;
+}

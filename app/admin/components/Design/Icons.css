@@ -1,0 +1,10 @@
+.icon {
+    background: url(./icons2.png);
+    padding: 1px 0 2px 18px;
+    margin-right: 5px;
+    vertical-align: 0px;
+}
+
+.icon.plus {
+    background-position: 0 -120px;
+}
