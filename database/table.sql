@@ -102,7 +102,7 @@ $$
                 id       SERIAL PRIMARY KEY,
                 user_id  INTEGER,
                 sum_cost DOUBLE PRECISION,
-                date     TIMESTAMP,
+                date     TIMESTAMP DEFAULT NOW(),
                 FOREIGN KEY (user_id) REFERENCES users (id)
             );
         END IF;

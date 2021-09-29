@@ -1,4 +1,4 @@
-import { OrderInput } from '../../../schemas/Order';
+/* import { OrderInput, Order } from '../../../schemas/Order'; */
 import { query } from '../../db';
 
 export const getOrders = async () => {
@@ -18,12 +18,30 @@ export const getOrderProducts = async (orderId: number) => {
     return products.rows;
 }
 
+const createPlaceholder = (valuesCount: number, placesCount: number) => {
+    const values = Array.from({ length: valuesCount }).map((_, index) => {
+        const places = Array.from({ length: placesCount }).map((_, placeIndex) => {
+            return `$${index * placesCount + placeIndex + 1}`;
+        });
 
+        const valuePlace = places.join(', ');
 
-export const createOrder = async (order: OrderInput) => {
-    const orders = await query(`
-        WITH ins AS (
-            INSERT INTO
-        )
-    `);
+        return valuePlace;
+    });
+
+    return 
 }
+
+/* export const createOrder = async (order: OrderInput) => {
+    const orders = await query<Pick<Order, 'id'>>(`
+        INSERT INTO orders (user_id, sum_cost) VALUES ($1, $2) RETURNING *;
+    `, ['0', '0']);
+
+    const newOrderId = orders.rows[0].id;
+
+    const products = await query(`
+        INSERT INTO order_products (order_id, product_id, price, count) VALUES ${order.products.map((_, index, { length }) => `($${1 + index}, $${2 + index})${index + 1 < length ? ',' : ';'}`)}
+    `, order.products.flatMap((product) => [product.id, product.count]));
+
+
+} */

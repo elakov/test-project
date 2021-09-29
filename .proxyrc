@@ -1,5 +1,5 @@
 {
   "/graphql": {
-    "target": "http://localhost:4000/",
+    "target": "http://web:4000/",
   }
 }

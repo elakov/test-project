@@ -1,6 +1,4 @@
-FROM node:16.8.0
-
-RUN apt-get update || : && apt-get install python -y
+FROM node:16.8.0-buster
 
 WORKDIR /usr/src/app
 
@@ -12,4 +10,4 @@ COPY . .
 
 EXPOSE 4000
 
-CMD npm run start:dev
+CMD npm run start:admin

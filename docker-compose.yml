@@ -11,10 +11,23 @@ services:
     ports:
       - "5432:5432"
   web:
-    image: node:16.8.0-alpine
+    image: node:14-alpine
+    depends_on:
+      - db
     working_dir: /app
     command: npm run start:dev
     volumes:
       - ./:/app
     ports:
       - "4000:4000"
+  admin:
+    image: node:14
+    restart: always
+    depends_on:
+      - web
+    working_dir: /app
+    command: npm run start:admin
+    volumes:
+      - ./:/app
+    ports:
+      - "1234:1234"
