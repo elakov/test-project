@@ -1,10 +1,10 @@
 import { createServer } from 'http';
 import { graphqlHTTP } from "express-graphql";
-import { GraphQLList, GraphQLObjectType, GraphQLSchema } from 'graphql';
+import { GraphQLInt, GraphQLList, GraphQLObjectType, GraphQLSchema } from 'graphql';
 import { ProductType } from './entities/Product/productQueries';
 import { createProduct, getProducts } from './entities/Product/productResolvers';
 import { CategoryType } from './entities/Category/categoryQueries';
-import { getCategories } from './entities/Category/categoryResolvers';
+import { getCategories, getCategoryProducts } from './entities/Category/categoryResolvers';
 import { ProductInputType } from './entities/Product/productMutations';
 import { OrderType } from './entities/Order/orderQueries';
 import { getOrders } from './entities/Order/orderResolvers';
@@ -13,8 +13,14 @@ const QueryRootType = new GraphQLObjectType({
     name:'Query',
     fields: () => ({
         products: {
+            args: {
+                categoryId: { type: GraphQLInt },
+            },
             type: new GraphQLList(ProductType),
-            resolve: () => {
+            resolve: (_, args) => {
+                if (args?.categoryId !== undefined) {
+                    return getCategoryProducts(args.categoryId);
+                }
                 return getProducts();
             },
         },
