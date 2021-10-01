@@ -23,8 +23,6 @@ services:
   admin:
     image: node:14
     restart: always
-    depends_on:
-      - web
     working_dir: /app
     command: npm run start:admin
     volumes:

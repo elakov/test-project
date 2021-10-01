@@ -3,10 +3,12 @@ import { useEffect, useState } from "preact/hooks";
 import { ComponentType, h } from "preact";
 import { NewProductPage } from "./NewProduct/NewProduct";
 import { ProductsPage } from "./Products/Products";
+import { NewOrderPage } from "./NewOrder/NewOrder";
 
 const pages = router.attach<ComponentType>({
     newProduct: NewProductPage,
     products: ProductsPage,
+    newOrder: NewOrderPage,
 })
 
 const initialRoute = router.matchRoute(location.pathname);
